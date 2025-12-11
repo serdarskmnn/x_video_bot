@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Proje Özel
+config/cookies.json
+assets/temp/
+output/
+assets/background/

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent; /* Arka plan şeffaf */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify_content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tweet-card {
+            background-color: #000000; /* Koyu Tema (Siyah) */
+            color: #e7e9ea;
+            width: 800px; /* Genişlik arttırıldı */
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid #2f3336;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            margin-right: 16px;
+            border: 2px solid #000;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .name {
+            font-weight: 700;
+            font-size: 22px;
+            color: #e7e9ea;
+        }
+
+        .handle {
+            font-weight: 400;
+            font-size: 18px;
+            color: #71767b;
+        }
+
+        .content {
+            font-size: 28px; /* Okunabilirlik için çok büyük font */
+            line-height: 1.5;
+            margin-bottom: 20px;
+            white-space: pre-wrap; /* Satır boşluklarını koru */
+            font-weight: 400;
+        }
+        
+        /* Görsel varsa gösterilecek alan */
+        .media-container {
+            margin-top: 15px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2f3336;
+        }
+
+        .media-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #71767b;
+            font-size: 18px;
+            display: flex;
+            gap: 15px;
+            border-top: 1px solid #2f3336;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tweet-card" id="tweet-card">
+        <div class="header">
+            <img src="{{ user_avatar }}" class="avatar" onerror="this.src='https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png'">
+            <div class="user-info">
+                <span class="name">{{ user_name }}</span>
+                <span class="handle">{{ user_handle }}</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            {{ text }}
+        </div>
+
+        {% if image_url %}
+        <div class="media-container">
+            <img src="{{ image_url }}" class="media-image">
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            <span>{{ created_at }}</span>
+            <span>•</span>
+            <span>X Video Bot</span>
+        </div>
+    </div>
+</body>
+</html>
